@@ -5,6 +5,8 @@ public class CampFire : MonoBehaviour
 {
     [SerializeField] private Light fireLight;
     [SerializeField] private AnimationCurve intensityCurve;
+    [SerializeField] private Inventory inventory;
+    [SerializeField] private ParticleSystem smokePuff;
 
     private float _cachedIntensity;
     private float _timer = 0;
@@ -15,6 +17,7 @@ public class CampFire : MonoBehaviour
         if (fireLight == null) fireLight = GetComponentInChildren<Light>();
         _cachedIntensity = fireLight.intensity;
         _lightPos = fireLight.transform.localPosition;
+        inventory.OnItemAdded.AddListener(() => { smokePuff.Play(); });
     }
 
     private void Update()
