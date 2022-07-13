@@ -5,9 +5,6 @@ public class CampFire : MonoBehaviour
 {
     [SerializeField] private Light fireLight;
     [SerializeField] private AnimationCurve intensityCurve;
-    [SerializeField] private float respawnDelay = 1f;
-    [SerializeField] private Inventory inventory;
-    [SerializeField] private Spawner spawner;
 
     private float _cachedIntensity;
     private float _timer = 0;
@@ -18,20 +15,6 @@ public class CampFire : MonoBehaviour
         if (fireLight == null) fireLight = GetComponentInChildren<Light>();
         _cachedIntensity = fireLight.intensity;
         _lightPos = fireLight.transform.localPosition;
-    }
-
-    private IEnumerator Start()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(respawnDelay);
-
-            if (!inventory.IsEmpty)
-            {
-                var item = inventory.TakeItem();
-                spawner.Spawn(item);
-            }
-        }
     }
 
     private void Update()

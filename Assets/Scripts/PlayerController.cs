@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
             var campFireInventory = campFire.GetComponent<Inventory>();
             _isDrop = true;
 
-            while(!inventory.IsEmpty)
+            while (!inventory.IsEmpty)
             {
                 var item = inventory.TakeItem();
                 campFireInventory.PushItem(item);

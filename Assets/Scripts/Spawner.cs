@@ -28,5 +28,6 @@ public class Spawner : MonoBehaviour
 
         item.transform.rotation = Random.rotation;
 
+        item.SetActive(true);
     }
 }
